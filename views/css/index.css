@@ -1,0 +1,183 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+@font-face{
+    font-family: "BungeeInline-Regular";
+    src: url("../fonts/BungeeInline-Regular.ttf");
+}
+@font-face{
+    font-family: "PoiretOne-Regular";
+    src: url("../fonts/PoiretOne-Regular.ttf");
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+.background{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../img/index_wp.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter:blur(5px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transform: scale(1.02);
+}
+.login_container{
+    width: 60%;
+    height: 0.1vh;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.8);
+    margin: 5vw auto;
+    display: flex;
+    flex-direction: column;
+}
+.title_login{
+    width: 100%;
+    height: 20%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+.title{
+    font-size: 30px;
+    color: #BF3EFF;
+    font-family: "BungeeInline-Regular";
+    line-height: 5vh;
+    margin-left: 2%;
+}
+.top_label{
+    text-decoration: none;
+    margin-left: 50%;
+    line-height: 10vh;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+a{
+    text-decoration: none;
+    color: blue;
+}
+a:hover{
+    text-decoration: underline;
+}
+.login_label, .buttons_container{
+    width: 100%;
+    height: 10vh;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.label_login{
+    font-family: "PoiretOne-Regular";
+    font-size: 40px;
+    
+}
+.login_user{
+    width: 100%;
+    height: 10vh;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.label_input{
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: black;
+    margin: 0 10px;
+    width: 80px;
+}
+.inputs{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #BF3EFF;
+    margin: 0 10px;
+    outline: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color:black;
+    padding-left: 10px;
+}
+.inputs:focus{
+    border-bottom:2px solid #9A32CD;
+}
+.buttons{
+    margin: 0 20px;
+    border:1px solid white;
+    background:#BF3EFF ;
+    color:white;
+    border-radius: 3px;
+    width: 120px;
+    height: 40px;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+.buttons:hover{
+   cursor: pointer;
+   background:#9A32CD ; 
+}
+.new_register_container{
+    width: 0%;
+    height: 80vh;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.8);
+    margin: 5vw auto;
+    position: absolute;
+    top: 0;
+    left: 20%;
+    display: flex;
+    flex-direction: column;
+}
+.title_new{
+    width: 100%;
+    height: 10vh;
+    background:#9A32CD;
+    overflow: hidden;
+    font-family: "BungeeInline-Regular";
+    color: #F8F8FF;
+    line-height: 8vh;
+    text-align: center;
+}
+.register_container{
+    width: 100%;
+    height: 80vh;
+    margin:1% auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.box{
+    width: 100%;
+    height: 8vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+.user_logo{
+    position: absolute;
+    left: 50%;
+    top:20%;
+    width: 180px;
+    height: 180px;
+    float: right;
+}
+.recovery_container{
+    width: 40%;
+    height: 40vh;
+    position: absolute;
+    top:20vh;
+    left: 30%;
+    background-color: rgba(255,255,255,0.8);
+    z-index: -5;
+    opacity: 0;
+}

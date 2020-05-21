@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="js/menu_animations.js"></script>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="icon" href="img/password.png">
+    <title>Secret Keys - MENU</title>
+</head>
+<body onload="update_hours();">
+
+    <div class="container">
+
+        <div class="container_left">
+            <div class="title_left" style="margin-bottom: 60px; height:6vh;">
+                <div class="icon_button" style="background-image: url(img/key.png);height:6vh;;"></div>
+                <div class="buttons_container" style="font-family:BungeeInline-Regular; font-size:20px; color:white;height:6vh;">
+                    Secret Keys
+                </div>
+            </div>
+
+            <div class="box_left" onclick="window.open('img/como_usar.pdf', '_blank', 'fullscreen=yes'); return false;">
+                <div class="icon_button" style="background-image: url(img/question.png);"></div>
+                <div class="buttons_container">Como usar?</div>
+            </div>
+
+            <div class="box_left" onclick="new_reg_controller('open');">
+                <div class="icon_button" style="background-image: url(img/list.png);"></div>
+                <div class="buttons_container">Novo Registro</div>
+            </div>
+
+            <div class="box_left" onclick="anim('info_cards');">
+                <div class="icon_button" style="background-image: url(img/card.png);"></div>
+                <div class="buttons_container">Cartões</div>
+            </div>
+
+            <div class="box_left" onclick="anim('info_banks');">
+                <div class="icon_button" style="background-image: url(img/bank.png);"></div>
+                <div class="buttons_container">Bancos</div>
+            </div>
+
+            <div class="box_left" onclick="anim('info_emails');">
+                <div class="icon_button" style="background-image: url(img/email.png);" onclick="anim('info_emails');"></div>
+                <div class="buttons_container" onclick="anim('info_emails');">Emails</div>
+            </div>
+
+            <div class="box_left" onclick="anim('info_social');">
+                <div class="icon_button" style="background-image: url(img/social.png);"></div>
+                <div class="buttons_container">Redes Sociais</div>
+            </div>
+
+            <div class="box_left" onclick="anim('info_games');">
+                <div class="icon_button" style="background-image: url(img/game.png);"></div>
+                <div class="buttons_container">Jogos</div>
+            </div>
+
+            <div class="box_left" onclick="anim('info_sites');">
+                <div class="icon_button" style="background-image: url(img/site.png);"></div>
+                <div class="buttons_container">Sites</div>
+            </div>
+
+            <div class="box_left" onclick="anim('info_app');">
+                <div class="icon_button" style="background-image: url(img/phone.png);"></div>
+                <div class="buttons_container">Aplicativos</div>
+            </div>
+
+            <div class="box_left" onclick="anim('info_documents');">
+                <div class="icon_button" style="background-image: url(img/document.png);"></div>
+                <div class="buttons_container">Documentos</div>
+            </div>
+
+            <div class="box_left" onclick="logout();">
+                <div class="icon_button" style="background-image: url(img/logout.png);"></div>
+                <div class="buttons_container">Deslogar</div>
+            </div>
+
+            
+        </div>
+
+        <div class="container_top">
+            <div class="box_top">
+                <img src="img/user_logged.png" alt="user icon" style="width: 32px; height:32px; padding-left:20px; margin-top:2px;">
+                <label id="user_logged_id" style="font-size: 18px;"></label>
+            </div>
+
+            <div class="box_top" style=" margin-left:100px;">
+                <img src="img/watch.png" alt="watch" style="width: 32px; height:32px;margin-right:10px; margin-top:2px;">
+                <label id="time">00:00:00</label>
+            </div>
+            <div class="box_top" style=" margin-left:100px;">
+                <label id="user_logged_id">Sistema desenvolvido por Allan Scala.</label>
+            </div>
+            
+        </div>
+
+        <div class="container_center">
+            <div class="register">
+                <div class="reg_title"><h2>Novo Registro</h2></div>
+                <div class="reg_inputs_container">
+                    <div class="reg_select">
+                        <label for="category_sel" class="labels">Categoria:</label>
+                        <select name="category_sel" id="category_sel" onchange="open_registers(this);">
+                            <option value="Cartões">Cartões</option>
+                            <option value="Bancos">Bancos</option>
+                            <option value="Emails">Emails</option>
+                            <option value="Redes Sociais">Redes Sociais</option>
+                            <option value="Jogos">Jogos</option>
+                            <option value="Sites">Sites</option>
+                            <option value="Aplicativos">Aplicativos</option>
+                            <option value="Documentos">Documentos</option>
+                        </select>
+                    </div>
+                    <div class="reg_keys">
+                        <div class="reg_inputs">
+                            <label for="key_app" class="labels">Aplicação:</label>
+                            <input type="text" class="inputs" name="key_app" id="key_app">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="key_user" class="labels">Usuario:</label>
+                            <input type="text" class="inputs" name="key_user" id="key_user">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="key_password" class="labels">Senha:</label>
+                            <input type="password" class="inputs" name="key_password" id="key_password">
+                        </div>
+                        <div class="reg_inputs">
+                            <button class="buttons" style="margin-left: 60px;" onclick="set_new_register('keys');">Salvar</button>
+                            <button class="buttons" onclick="new_reg_controller('close');">Fechar</button>
+                        </div>
+                    </div>
+
+                    <div class="reg_cards">
+                        <div class="reg_inputs">
+                            <label for="card_number" class="labels">Numero:</label>
+                            <input type="text" class="inputs" name="card_number" id="card_number">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="card_validity" class="labels">Validade:</label>
+                            <input type="Date" class="inputs" name="card_validity" id="card_validity">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="card_name" class="labels">Titular:</label>
+                            <input type="text" class="inputs" name="card_name" id="card_name">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="card_cod" class="labels">Cod. Seg:</label>
+                            <input type="text" class="inputs" name="card_cod" id="card_cod">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="card_banner" class="labels">Bandeira:</label>
+                            <select name="category_sel" id="category_banner">
+                                <option value="">Visa</option>
+                                <option value="">Mastercard</option>
+                                <option value="">Elo</option>
+                                <option value="">American Express</option>
+                                <option value="">Dinners Club</option>
+                                <option value="">Alelo</option>
+                                <option value="">Sodexo</option>
+                                <option value="">Banescard</option>
+                                <option value="">VR</option>
+                                <option value="">Cabal</option>
+                                <option value="">Senff</option>
+                                <option value="">Hipercard</option>
+                                <option value="">Ticket</option>
+                                <option value="">Outros</option>
+                            </select>
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="card_pass" class="labels">Senha:</label>
+                            <input type="password" class="inputs" name="card_pass" id="card_pass">
+                        </div>
+                        <div class="reg_inputs">
+                            <button class="buttons" style="margin-left: 60px;" onclick="set_new_register('cards');">Salvar</button>
+                            <button class="buttons" onclick="new_reg_controller('close');">Fechar</button>
+                        </div>
+                    </div>
+
+                    <div class="reg_banks">
+                        <div class="reg_inputs">
+                            <label for="bank_name" class="labels">Banco:</label>
+                            <input type="text" class="inputs" name="bank_name" id="bank_name">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="bank_ag" class="labels">Agencia:</label>
+                            <input type="text" class="inputs" name="bank_ag" id="bank_ag">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="bank_cc" class="labels">Conta:</label>
+                            <input type="text" class="inputs" name="bank_cc" id="bank_cc">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="bank_key" class="labels">Chave:</label>
+                            <input type="text" class="inputs" name="bank_key" id="bank_key">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="bank_pass" class="labels">Senha:</label>
+                            <input type="password" class="inputs" name="bank_pass" id="bank_pass">
+                        </div>
+                        <div class="reg_inputs">
+                            <button class="buttons" style="margin-left: 60px;" onclick="set_new_register('banks');">Salvar</button>
+                            <button class="buttons" onclick="new_reg_controller('close');">Fechar</button>
+                        </div>
+                    </div>
+
+                    <div class="reg_documents">
+                        <div class="reg_inputs">
+                            <label for="doc_name" class="labels">Nome:</label>
+                            <input type="text" class="inputs" name="doc_name" id="doc_name">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="doc_number" class="labels">Numero:</label>
+                            <input type="text" class="inputs" name="doc_number" id="doc_number">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="doc_emission" class="labels">Emissão:</label>
+                            <input type="date" class="inputs" name="doc_emission" id="doc_emission">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="doc_expiration " class="labels">Validade:</label>
+                            <input type="date" class="inputs" name="doc_expiration" id="doc_expiration">
+                        </div>
+                        <div class="reg_inputs">
+                            <label for="doc_obs" class="labels">Observação:</label>
+                            <input type="text" class="inputs" name="doc_obs" id="doc_obs">
+                        </div>
+                        <div class="reg_inputs">
+                            <button class="buttons" style="margin-left: 60px;" onclick="set_new_register('documents');">Salvar</button>
+                            <button class="buttons" onclick="new_reg_controller('close');">Fechar</button>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+            
+            <div class="pop_up" style="border-radius: 3px;">
+                <br>
+                <label id="pop_text" style="color:white; font-family:'Segoe UI',sans-serif; font-size:18px; font-weight:bold;"></label>
+                <br><br>
+                <button class="buttons" style="background-color: white; color:black;" onclick="pop_close();">OK</button>
+            </div>
+
+            <div class="edit_register">
+                <div class="reg_title"><h2>EDITAR OU DELETAR REGISTRO</h2></div>
+                <div class="cont_input">
+                    <div class="get_inputs">
+                    </div>
+                </div>
+                
+                <div class="inputs">
+                    <button class="buttons" onclick="save_edit($('#1').val());">Salvar</button>
+                    <button class="buttons" onclick="delete_reg($('#1').val());">Deletar</button>
+                    <button class="buttons" onclick="close_edit();">Fechar</button>
+                </div>
+
+            </div>
+
+            <div class="info_container" id="info_cards">
+                <table id="table_cards" class="info_tables">
+                    <tr>
+                        <th>ID</th>
+                        <th>Categoria</th>
+                        <th>Numero</th>
+                        <th>Validade</th>
+                        <th>Titular</th>
+                        <th>Cod.Seg</th>
+                        <th>Bandeira</th>
+                        <th>Senha</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="info_container" id="info_banks">
+                <table id="table_banks" class="info_tables">
+                    <tr>
+                        <th>ID</th>
+                        <th>Categoria</th>
+                        <th>Banco</th>
+                        <th>Agencia</th>
+                        <th>Conta</th>
+                        <th>Chave</th>
+                        <th>Senha</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="info_container" id="info_emails">
+                <table id="table_emails" class="info_tables">
+                    <tr>
+                        <th>ID</th>
+                        <th>Categoria</th>
+                        <th>Aplicação</th>
+                        <th>Usuario</th>
+                        <th>Senha</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="info_container" id="info_social">
+                <table id="table_social" class="info_tables">
+                    <tr>
+                        <th>ID</th>
+                        <th>Categoria</th>
+                        <th>Aplicação</th>
+                        <th>Usuario</th>
+                        <th>Senha</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="info_container" id="info_games">
+                <table id="table_games" class="info_tables">
+                    <tr>
+                        <th>ID</th>
+                        <th>Categoria</th>
+                        <th>Aplicação</th>
+                        <th>Usuario</th>
+                        <th>Senha</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="info_container" id="info_sites">
+                <table id="table_sites" class="info_tables">
+                    <tr>
+                        <th>ID</th>
+                        <th>Categoria</th>
+                        <th>Aplicação</th>
+                        <th>Usuario</th>
+                        <th>Senha</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="info_container" id="info_app">
+                <table id="table_app" class="info_tables">
+                    <tr>
+                        <th>ID</th>
+                        <th>Categoria</th>
+                        <th>Aplicação</th>
+                        <th>Usuario</th>
+                        <th>Senha</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="info_container" id="info_documents">
+                <table id="table_documents" class="info_tables">
+                    <tr>
+                        <th>ID</th>
+                        <th>Categoria</th>
+                        <th>Nome</th>
+                        <th>Numero</th>
+                        <th>Emissão</th>
+                        <th>Validade</th>
+                        <th>Observação</th>
+                    </tr>
+                </table>
+            </div>             
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // FUNCAO QUE PEGA O USUARIO ONLINE
+        $(document).ready(function(){
+            eel.get_user_online()
+        })
+        eel.expose(get_user)
+        function get_user(user){
+            $('#user_logged_id').text('Usuario logado: '+ user)
+        }
+        
+        // INICIO FUNCOES QUE ENVIAM NOVOS CADASTROS E RECEBEM O RETORNO
+        async function set_new_register(category){
+            if (category == "keys"){
+                eel.btn_key($('#category_sel').val(),$('#key_app').val(), $('#key_user').val(), $('#key_password').val())
+                $('#key_app').val(''),
+                $('#key_user').val(''),
+                $('#key_password').val('')
+            }
+            if (category == "cards"){
+                eel.btn_cards($('#category_sel').val(),$('#card_number').val(), $('#card_validity').val(), $('#card_name').val(), $('#card_cod').val(), $('#category_banner').val(),$('#card_pass').val())
+                $('#card_number').val(''),
+                $('#card_name').val(''),
+                $('#card_cod').val(''),
+                $('#card_pass').val('')
+
+            }
+            if (category == "banks"){
+                eel.btn_banks($('#category_sel').val(),$('#bank_name').val(),$('#bank_ag').val(),$('#bank_cc').val(),$('#bank_key').val(),$('#bank_pass').val())
+                $('#bank_name').val(''),
+                $('#bank_ag').val(''),
+                $('#bank_cc').val(''),
+                $('#bank_key').val(''),
+                $('#bank_pass').val('')
+               
+            }
+            if (category == "documents"){
+                eel.btn_documets($('#category_sel').val(),$('#doc_name').val(),$('#doc_number').val(),$('#doc_emission').val(),$('#doc_expiration').val(),$('#doc_obs').val())
+                $('#doc_name').val(''),
+                $('#doc_number').val(''),
+                $('#doc_obs').val('')
+            }
+        }
+        eel.expose(new_register_return)
+        function new_register_return(msg){
+            var get_pop = document.getElementsByClassName("pop_up");
+            get_pop[0].style.visibility = "visible";
+            $('#pop_text').text(msg)
+            eel.update_all_info()
+        }
+        
+        // FUNCAO QUE CRIA O BANCO DE DADOS E PEGA TODOS OS  CADASTROS E JOGA NO CONTAINER CENTER
+        $(document).ready(function(){
+            eel.update_all_info()
+        })
+
+        eel.expose(get_update_all_js)
+        function get_update_all_js(emails_items, socials_items, games_items, sites_items, app_items, cards_items, banks_items, documents_items){
+            $(".info_tables td").remove(); 
+            for (var email = 0;email < emails_items.length; email++){
+                var get_table = document.getElementById("table_emails");
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                var td4 = document.createElement("td");
+                var td5 = document.createElement("td");
+                td.innerText = emails_items[email][0]
+                td.className = "acoes"
+                td.setAttribute("onclick","actions(this, 'keys');")
+                td2.innerText = emails_items[email][1]
+                td3.innerText = emails_items[email][2]
+                td4.innerText = emails_items[email][3]
+                td5.innerText = emails_items[email][4]
+                get_table.appendChild(tr)
+                tr.appendChild(td)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                tr.appendChild(td4)
+                tr.appendChild(td5)
+            }
+            
+            for (var social = 0; social< socials_items.length; social++){
+                var get_table = document.getElementById("table_social");
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                var td4 = document.createElement("td");
+                var td5 = document.createElement("td");
+                td.innerText = socials_items[social][0]
+                td.className = "acoes"
+                td.setAttribute("onclick","actions(this, 'keys');")
+                td2.innerText = socials_items[social][1]
+                td3.innerText = socials_items[social][2]
+                td4.innerText = socials_items[social][3]
+                td5.innerText = socials_items[social][4]
+                get_table.appendChild(tr)
+                tr.appendChild(td)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                tr.appendChild(td4)
+                tr.appendChild(td5)
+            }
+
+            for (var games = 0; games < games_items.length; games++){
+                var get_table = document.getElementById("table_games");
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                var td4 = document.createElement("td");
+                var td5 = document.createElement("td");
+                td.innerText = games_items[games][0]
+                td.className = "acoes"
+                td.setAttribute("onclick","actions(this, 'keys');")
+                td2.innerText = games_items[games][1]
+                td3.innerText = games_items[games][2]
+                td4.innerText = games_items[games][3]
+                td5.innerText = games_items[games][4]
+                get_table.appendChild(tr)
+                tr.appendChild(td)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                tr.appendChild(td4)
+                tr.appendChild(td5)
+           
+            }
+
+            for (var sites = 0; sites < sites_items.length; sites++){
+                var get_table = document.getElementById("table_sites");
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                var td4 = document.createElement("td");
+                var td5 = document.createElement("td");
+                td.innerText = sites_items[sites][0]
+                td.className = "acoes"
+                td.setAttribute("onclick","actions(this, 'keys');")
+                td2.innerText = sites_items[sites][1]
+                td3.innerText = sites_items[sites][2]
+                td4.innerText = sites_items[sites][3]
+                td5.innerText = sites_items[sites][4]
+                get_table.appendChild(tr)
+                tr.appendChild(td)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                tr.appendChild(td4)
+                tr.appendChild(td5)
+            }
+
+            for (var cards = 0; cards < cards_items.length;cards++){
+                var get_table = document.getElementById("table_cards");
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                var td4 = document.createElement("td");
+                var td5 = document.createElement("td");
+                var td6 = document.createElement("td");
+                var td7 = document.createElement("td");
+                var td8 = document.createElement("td");
+                td.innerText = cards_items[cards][0]
+                td.className = "acoes"
+                td.setAttribute("onclick","actions(this, 'cards');")
+                td2.innerText = cards_items[cards][1]
+                td3.innerText = cards_items[cards][2]
+                td4.innerText = cards_items[cards][3]
+                td5.innerText = cards_items[cards][4]
+                td6.innerText = cards_items[cards][5]
+                td7.innerText = cards_items[cards][6]
+                td8.innerText = cards_items[cards][7]
+                get_table.appendChild(tr)
+                tr.appendChild(td)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                tr.appendChild(td4)
+                tr.appendChild(td5)
+                tr.appendChild(td6)
+                tr.appendChild(td7)
+                tr.appendChild(td8)
+            }
+
+            for (var apps = 0; apps < app_items.length;apps++){
+                var get_table = document.getElementById("table_app");
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                var td4 = document.createElement("td");
+                var td5 = document.createElement("td");
+                td.innerText = app_items[apps][0]
+                td.className = "acoes"
+                td.setAttribute("onclick","actions(this, 'keys');")
+                td2.innerText = app_items[apps][1]
+                td3.innerText = app_items[apps][2]
+                td4.innerText = app_items[apps][3]
+                td5.innerText = app_items[apps][4]
+                get_table.appendChild(tr)
+                tr.appendChild(td)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                tr.appendChild(td4)
+                tr.appendChild(td5)
+            }
+
+            for (var banks = 0; banks < banks_items.length;banks++){
+                var get_table = document.getElementById("table_banks");
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                var td4 = document.createElement("td");
+                var td5 = document.createElement("td");
+                var td6 = document.createElement("td");
+                var td7 = document.createElement("td");
+                td.innerText = banks_items[banks][0]
+                td.className = "acoes"
+                td.setAttribute("onclick","actions(this, 'banks');")
+                td2.innerText = banks_items[banks][1]
+                td3.innerText = banks_items[banks][2]
+                td4.innerText = banks_items[banks][3]
+                td5.innerText = banks_items[banks][4]
+                td6.innerText = banks_items[banks][5]
+                td7.innerText = banks_items[banks][6]
+                get_table.appendChild(tr)
+                tr.appendChild(td)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                tr.appendChild(td4)
+                tr.appendChild(td5)
+                tr.appendChild(td6)
+                tr.appendChild(td7)
+            }
+
+            for (var documents = 0; documents < documents_items.length;documents++){
+                var get_table = document.getElementById("table_documents");
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                var td4 = document.createElement("td");
+                var td5 = document.createElement("td");
+                var td6 = document.createElement("td");
+                var td7 = document.createElement("td");
+                td.innerText = documents_items[documents][0]
+                td.className = "acoes"
+                td.setAttribute("onclick","actions(this, 'documents');")
+                td2.innerText = documents_items[documents][1]
+                td3.innerText = documents_items[documents][2]
+                td4.innerText = documents_items[documents][3]
+                td5.innerText = documents_items[documents][4]
+                td6.innerText = documents_items[documents][5]
+                td7.innerText = documents_items[documents][6]
+                get_table.appendChild(tr)
+                tr.appendChild(td)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                tr.appendChild(td4)
+                tr.appendChild(td5)
+                tr.appendChild(td6)
+                tr.appendChild(td7)
+            }
+ 
+        }
+
+        // FUNÇÕES PARA EDITAR E DELETAR REGISTROS
+        async function actions(element, table){
+            eel.get_registers($(element).text(),table)
+            var get_container = document.getElementsByClassName("cont_input");
+            get_container[0].innerHTML = "";
+            var edit_window = document.getElementsByClassName("edit_register");
+            edit_window[0].style.visibility = "visible";
+            edit_window[0].style.left = "32%";
+            edit_window[0].style.transition = "all 2s";
+        }
+        eel.expose(action_out)
+        function action_out(registers){
+            registers.forEach(get_array_values)
+            document.getElementById("0").readOnly = true;
+            document.getElementById("1").readOnly = true;
+        }
+        function get_array_values(item, index){
+            var get_container = document.getElementsByClassName("cont_input");
+            var get_div = document.createElement('div');
+            get_div.className = 'get_inputs';
+            var input = document.createElement('input');
+            input.id = index
+            input.value = item
+            get_div.appendChild(input)
+            get_container[0].appendChild(get_div)
+        }
+
+        // SALVAR AS EDICOES
+        async function save_edit(category){
+            if (category == "Emails"||category == "Redes Sociais"||category == "Jogos"||category == "Sites"||category == "Aplicativos" ){
+                var get_infos = [$('#2').val(),$('#3').val(),$('#4').val()]
+                eel.reg_edit($('#0').val(),'keys',get_infos)
+            }
+            if (category == "Cartões"){
+                var get_infos = [$('#2').val(),$('#3').val(),$('#4').val(),$('#5').val(),$('#6').val(),$('#7').val()]
+                eel.reg_edit($('#0').val(),'cards',get_infos)
+            }
+            if (category == "Bancos"){
+                var get_infos = [$('#2').val(),$('#3').val(),$('#4').val(),$('#5').val(),$('#6').val()]
+                eel.reg_edit($('#0').val(),'banks',get_infos)
+            }
+            if (category == "Documentos"){
+                var get_infos = [$('#2').val(),$('#3').val(),$('#4').val(),$('#5').val(),$('#6').val()]
+                eel.reg_edit($('#0').val(),'documents',get_infos)
+            }
+            
+        }
+        eel.expose(save_return)
+        function save_return(message){
+            var container = document.getElementsByClassName("edit_register");
+            container.innerHTML = "";
+            container[0].style.visibility = "hidden";
+            var pop = document.getElementsByClassName("pop_up");
+            pop[0].style.visibility = "visible";
+            $('#pop_text').text(message)
+            eel.update_all_info()
+        }
+
+        // DELETAR OS REGISTROS
+        async function delete_reg(category){
+            if (category == "Emails"||category == "Redes Sociais"||category == "Jogos"||category == "Sites"||category == "Aplicativos" ){
+                eel.reg_delete($('#0').val(),'keys')
+            }
+            if (category == "Cartões"){
+                eel.reg_delete($('#0').val(),'cards')
+            }
+            if (category == "Bancos"){
+                eel.reg_delete($('#0').val(),'banks')
+            }
+            if (category == "Documentos"){
+                eel.reg_delete($('#0').val(),'documents')
+            }
+            
+        }
+        eel.expose(delete_return)
+        function delete_return(message){
+            var container = document.getElementsByClassName("edit_register");
+            container.innerHTML = "";
+            container[0].style.visibility = "hidden";
+            var pop = document.getElementsByClassName("pop_up");
+            pop[0].style.visibility = "visible";
+            $('#pop_text').text(message)
+            eel.update_all_info()
+        }
+
+        
+    </script>
+</body>
+</html>
+
+
