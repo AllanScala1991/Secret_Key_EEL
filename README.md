@@ -1,3 +1,7 @@
+### Note - english branch
+- This branch has the English translations for comments and code 
+- All credits to AllanScala1991 for this awesome and comprehensive project
+
 # Secret_Key_EEL
 Python project using the EEL library
 
