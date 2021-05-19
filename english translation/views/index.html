@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="js/index_animations.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="img/password.png">
+    <title>Secret Keys</title>
+</head>
+<body onload="load_page();">
+    <div class="container">
+        <div class="background"></div>
+
+        <div class="login_container">
+            <div class="title_login">
+                <h1 class="title" style="padding:0;">Secret Key</h1>
+                <label style="font-size:16px;" class="top_label">New user? <a href="#" onclick="new_container_anim('open');">Click here</a></label>
+            </div>
+            <div class="login_label">
+                <label class="label_login">Login</label>
+            </div>
+            <div class="login_user">
+                <label for="user_login" class="label_input">User:</label>
+                <input type="text" class="inputs" name="user_login" id="get_user_login" placeholder="josefrancisco9"><br>
+            </div>
+            <div class="login_user">
+                <label for="user_login" class="label_input">Password:</label>
+                <input type="password" class="inputs" name="user_login" id="get_user_password" placeholder="* * * * * * * * *">
+            </div>
+            <div class="buttons_container">
+                <label class="top_label" style="margin: 0 20px;">Forgot your password?<a href="#" onclick="recovery_pass('open');">Click here</a></label>
+                <button class="buttons" onclick="login_user();">Confirm</button>
+            </div>
+            <div class="login_user" style="text-align: center;width: 100%;">
+                <label class="label_input" id="login_txt" style="width: 100%;"></label>
+            </div>
+
+        </div>
+
+        <div class="new_register_container">
+            <div class="title_new"><h2 style="padding:0;">New User</h2></div>
+            <div class="register_container">
+                <div class="box">
+                    <label for="user_name" class="label_input">Name:</label>
+                    <input type="text" name="user_name" class="inputs" id="new_name" placeholder="José Francisco">
+                </div>
+
+                <div class="box">
+                    <label for="user_phone" class="label_input">Phone:</label>
+                    <input type="tel" name="user_phone" class="inputs" id="new_phone" placeholder="99999999">
+                </div>
+
+                <div class="box">
+                    <label for="user_date" class="label_input">Born:</label>
+                    <input type="date" name="user_date" class="inputs" id="new_date">
+                    
+                </div>
+
+                <div class="box">
+                    <label for="user_new_login" class="label_input">User:</label>
+                    <input type="text" name="user_new_login" class="inputs" id="new_login" placeholder="josefrancisco9">
+                </div>
+
+                <div class="box">
+                    <label for="user_new_password" class="label_input">Password:</label>
+                    <input type="password" name="user_new_password" class="inputs" id="new_pass">
+                </div>
+                <div class="box">
+                    <label for="user_new_email" class="label_input">Email:</label>
+                    <input type="email" name="user_new_email" class="inputs" id="new_email" placeholder="jose@gmail.com">
+                </div>
+                <div class="user_logo">
+                    <img src="img/user.png" alt="user logo" class="user_logo"> 
+                </div>
+
+                <div class="box"><label class="label_input" id="return_register" style="width: 90%;"></label></div>
+
+                <div class="box">
+                    <button class="buttons" onclick="save_register_js();">SAVE</button>
+                    <button class="buttons" onclick="new_container_anim('close');">CLOSE</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="recovery_container">
+            <div class="title_new"><h2>RECOVER PASSWORD</h2></div>
+            <div class="box">
+                <label for="get_email" class="label_input">Email:</label>
+                <input type="email" name="get_email" id="get_email" class="inputs" style="width: 400px; text-align:center;" placeholder="example@example.com">
+            </div>
+            <div class="box" style="margin-top: 30px;">
+                <button class="buttons" style="margin-left:150px;" onclick="reco_pass_js();">Retrieve</button>
+                <button class="buttons" onclick="recovery_pass('close');">Close</button>
+            </div>
+            <div class="box" style="text-align:center;"><label class="label_input" id="reco_label" style="width: 99%; "></label></div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" >
+        // NEW USER REGISTRATION
+        async function save_register_js(){
+            eel.btn_save($('#new_name').val(),$('#new_phone').val(),$('#new_date').val(),$('#new_login').val(),$('#new_pass').val(),$('#new_email').val())
+        };
+        eel.expose(save_return); // USED TO PASS THE FUNCTION TO BE SEEN AT PYTHON
+        function save_return(status){
+            if (status == "success"){
+                $('#return_register').text('Registration completed successfully!');
+                $('#new_name').val('');
+                $('#new_phone').val('');
+                $('#new_login').val('');
+                $('#new_pass').val('');
+                $('#new_email').val('');
+            }
+            if (status == "failed"){
+                $('#return_register').text('Error when registering, make sure you have no blank fields.');
+            }
+        };
+
+        // RECOVER PASSWORD
+        async function reco_pass_js(){
+            $('#reco_label').text("Checking email, please wait ...")
+            eel.btn_recovery($('#get_email').val())
+        };
+        
+        eel.expose(reco_return)
+        function reco_return(status){
+            if (status == "success"){
+                $('#reco_label').text("Password sent to email successfully!")
+            }
+            if (status == "failed"){
+                $('#reco_label').text("We did not find the email you entered")
+            }
+        };
+
+        // USER LOGIN
+        async function login_user(){
+            eel.btn_login($('#get_user_login').val(), $('#get_user_password').val())
+        };
+
+        eel.expose(login_return)
+        function login_return(status){
+            if (status == "success"){
+                location.href = "menu.html";
+            }
+            if (status == "failed"){
+                $('#login_txt').text("Incorrect User or Password")
+            }
+        }
+
+
+    </script>
+    
+</body>
+</html>
