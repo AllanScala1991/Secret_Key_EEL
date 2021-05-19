@@ -1,17 +1,17 @@
 # Secret_Key_EEL
-Projeto em Python ultilizando a biblioteca EEL
+Python project using the EEL library
 
-  - Sistema Gerenciador de Senhas.
-  - Sistema de Login
-  - Cadastro de Novos Usuarios
-  - Recuperação de senha através de um email (Para essa funcionalidade, no arquivo login.py, na função recovery_password, você deve
-  inserir os parametros do email que será feito o envio.
-  - Cadastro, Edição e Exclusão de Registros
-  - Lista de registros cadastrados
+  - Password Manager System.
+  - Login System
+  - New User Registration
+  - Password recovery via email (For this functionality, in the login.py file, in the recovery_password function, you must
+  insert the parameters of the email that will be sent.
+  - Registration, Editing and Deleting Records
+  - List of registered records
 
-# Dependencias
+# Dependencies
   - EEL
   - SQLITE 3
-  - Obs: Para que o sistema rode corretamente você deve criar dentro da pasta views uma pasta chamada "database".
-  - Obs2: Por padrão o sistema ultiliza o Chrome , porem se você não possuir esse navegador, deve incluir o seguinte parametro:
-  eel.start(mode="firefox") ou outro navegador que você esteja ultilizando.
+  - Note: For the system to run correctly you must create a folder called "database" inside the views folder.
+  - Obs2: By default, the system uses Chrome, but if you do not have this browser, you must include the following parameter:
+  eel.start (mode = "firefox") or another browser you are using.

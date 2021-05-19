@@ -1,5 +1,5 @@
 
-// INICIO FUNCAO QUE VERIFICA AS HORAS 
+// START FUNCTION THAT CHECKS THE HOURS 
 function addZero(i) {
     if (i < 10) {
       i = "0" + i;
@@ -18,9 +18,9 @@ function get_time(){
 function update_hours(){
     let update = setInterval(function(){ get_time(); }, 1000);
 };
-// FIM DA FUNCAO
+// END OF THE FUNCTION
 
-// INICIO DA FUNCAO QUE VERIFICA A CATEGORIA SELECIONA E JOGA OS CAMPOS NECESSARIOS
+// START OF THE FUNCTION THAT CHECKS THE CATEGORY SELECTS AND PLAYS THE NECESSARY FIELDS
 function open_registers(category){
     var element = category.value
     var keys = document.getElementsByClassName("reg_keys");
@@ -28,34 +28,34 @@ function open_registers(category){
     var banks = document.getElementsByClassName("reg_banks");
     var documents = document.getElementsByClassName("reg_documents");
     
-    if (element == "Emails" || element == "Redes Sociais" || element == "Jogos" || element == "Sites" || element == "Aplicativos" ){
+    if (element == "Emails" || element == "Social Networks" || element == "Games" || element == "Sites" || element == "Applications" ){
         keys[0].style.visibility = "visible";
         cards[0].style.visibility = "hidden";
         banks[0].style.visibility = "hidden";
         documents[0].style.visibility = "hidden";
     }
-    if (element == "Cartões"){
+    if (element == "Cards"){
         keys[0].style.visibility = "hidden";
         cards[0].style.visibility = "visible";
         banks[0].style.visibility = "hidden";
         documents[0].style.visibility = "hidden";
     }
-    if (element == "Bancos"){
+    if (element == "Banks"){
         keys[0].style.visibility = "hidden";
         cards[0].style.visibility = "hidden";
         banks[0].style.visibility = "visible";
         documents[0].style.visibility = "hidden";
     }
-    if (element == "Documentos"){
+    if (element == "Documents"){
         keys[0].style.visibility = "hidden";
         cards[0].style.visibility = "hidden";
         banks[0].style.visibility = "hidden";
         documents[0].style.visibility = "visible";
     }
 };
-// FIM DA FUNCAO
+// END OF THE FUNCTION
 
-// INICIO FUNÇÃO QUE CONTROLA ABERTURA E FECHAMENTO DE NOVOS REGISTROS
+// START FUNCTION THAT CONTROLS OPENING AND CLOSING NEW RECORDS
 function new_reg_controller(status){
     var get_window = document.getElementsByClassName("register");
     var get_edit_window = document.getElementsByClassName("edit_registers");
@@ -84,16 +84,16 @@ function new_reg_controller(status){
         documents[0].style.visibility = "hidden";
     }
 };
-// FIM DA FUNÇÃO 
+// END OF FUNCTION 
 
-// FUNCAO PARA FECHAR O POP UP 
+// FUNCTION TO CLOSE POP UP 
 function pop_close(){
     var get_window = document.getElementsByClassName("pop_up");
     get_window[0].style.visibility = "hidden";
 }
-// FIM DA FUNÇÃO
+// END OF FUNCTION
 
-// FUNÇÃO DE CONTROLE DE INFOS NA TELA
+// INFO CONTROL FUNCTION ON THE SCREEN
 function anim(div){
     var close_divs = document.querySelectorAll(".info_container");
     for(var i=0; i<close_divs.length; i++){
@@ -106,12 +106,12 @@ function anim(div){
     element.style.transition = "width 2s";
 }
 
-// FUNÇÃO DE LOGOUT
+// LOGOUT FUNCTION
 function logout(){
     location.href = "index.html";
 }
 
-// FUNCAO QUE FECHA A TELA DE EDITAR OU DELETAR
+// FUNCTION THAT CLOSES THE EDIT OR DELETE SCREEN
 function close_edit(){
     var container = document.getElementsByClassName("edit_register");
     container[0].style.visibility = "hidden";
